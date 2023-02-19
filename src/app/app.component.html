@@ -31,4 +31,11 @@
       </div>
     </form>
   </div>
+  <div>
+    <ul>
+      <li *ngFor="let item of (trace$ | async)?.traces">
+        {{item}}
+      </li>
+    </ul>
+  </div>
 </div>

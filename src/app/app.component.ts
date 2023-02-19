@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AppState } from './shared/store/app.state';
 import { CounterActions } from './shared/store/counter/actions';
 import { CounterState } from './shared/store/counter/state';
+import { TraceState } from './shared/store/trace/state';
 import { UserActions } from './shared/store/user/actions';
 import { UserState } from './shared/store/user/state';
 
@@ -16,6 +17,8 @@ import { UserState } from './shared/store/user/state';
 export class AppComponent {
   counter$: Observable<CounterState>;
   user$: Observable<UserState>;
+  trace$: Observable<TraceState>;
+
   userForm: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -24,6 +27,7 @@ export class AppComponent {
   constructor(private store: Store<AppState>){
     this.counter$ = this.store.select( s => s.counter);
     this.user$ = this.store.select(s => s.user);
+    this.trace$ = this.store.select(s => s.trace);
   }
 
   updateUser():void {
